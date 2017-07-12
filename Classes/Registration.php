@@ -72,15 +72,15 @@ class Registration{
     $mail->SMTPDebug = 0;
     $mail->SMTPSecure = 'ssl';
     $mail->Port = 587;
-    $mail->Host = 'smtp.umbler.com';
+    $mail->Host = '';
     $mail->SMTPAuth = true;
-    $mail->Username = 'cesar@twohills.com.br';
-    $mail->Password = 'init@nos3';
+    $mail->Username = '';
+    $mail->Password = '';
     $mail->FromName = 'Equipe TwoHills TV';
     $mail->From = 'no-reply@twohills.tv';
     $mail->AddAddress($email);
     $mail->Subject = 'Bem Vindo a TwoHills TV';
-    $mail->Body = "http://localhost/twohills.tv/dev/Alpha/register?id=" . urlencode($id) . "&verification_code=" . urlencode($activation_hash);
+    $mail->Body = "http://localhost/Alpha/register?id=" . urlencode($id) . "&verification_code=" . urlencode($activation_hash);
 
     if(!$mail->Send()){
       //$query_delete_user = "DELETE FROM users WHERE id=:id";
@@ -106,7 +106,7 @@ class Registration{
       if ($stmt->rowCount() > 0) {
           $this->verification_successful = true;
           $this->messages[] = MESSAGE_REGISTRATION_ACTIVATION_SUCCESSFUL;
-          header( "refresh:3;url=localhost/twohills.tv" );
+          header( "refresh:3;url=localhost/Alpha/" );
       } else {
           $this->errors[] = MESSAGE_REGISTRATION_ACTIVATION_NOT_SUCCESSFUL;
       }
