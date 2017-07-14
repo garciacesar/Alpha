@@ -72,10 +72,10 @@ class Registration{
     $mail->SMTPDebug = 0;
     $mail->SMTPSecure = 'ssl';
     $mail->Port = 587;
-    $mail->Host = '';
+    $mail->Host = 'smtp.umbler.com';
     $mail->SMTPAuth = true;
-    $mail->Username = '';
-    $mail->Password = '';
+    $mail->Username = 'cesar@twohills.com.br';
+    $mail->Password = 'init@nos3';
     $mail->FromName = 'Equipe TwoHills TV';
     $mail->From = 'no-reply@twohills.tv';
     $mail->AddAddress($email);
@@ -106,7 +106,7 @@ class Registration{
       if ($stmt->rowCount() > 0) {
           $this->verification_successful = true;
           $this->messages[] = MESSAGE_REGISTRATION_ACTIVATION_SUCCESSFUL;
-          header( "refresh:3;url=localhost/Alpha/" );
+          header( "refresh:3;url=localhost/twohills.tv" );
       } else {
           $this->errors[] = MESSAGE_REGISTRATION_ACTIVATION_NOT_SUCCESSFUL;
       }

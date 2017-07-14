@@ -35,8 +35,8 @@ class Login{
         $rememberme = $_POST['rememberme'] = null;
       }
       $this->loginWithPost($email, $password, $rememberme);
-    }elseif (isset($_POST['register'])) {
-      header('Location:register.php');
+    } elseif (isset($_POST['edit'])) {
+      $this->editUser($email);
     }
 
   }
@@ -92,7 +92,11 @@ class Login{
       $_SESSION['firstname'] = $result->firstname;
       $_SESSION['surname'] = $result->surname;
       $_SESSION['email'] = $result->email;
+      $_SESSION['birthday'] = $result->birthday;
+      $_SESSION['sex'] = $result->sex;
       $_SESSION['level'] = $result->level;
+      $_SESSION['registration_datetime'] = $result->registration_datetime;
+      $_SESSION['registration_ip'] = $result->registration_ip;
       $_SESSION['logged'] = true;
 
       $this->id = $result->id;
@@ -111,6 +115,11 @@ class Login{
 
   public function isUserLogged(){
     return $this->logged;
+  }
+
+  private function editUser($email){
+    $email = trim($email);
+    // $sql = "UPDATE users (firstname, surname, birthday, sex, email, )"
   }
 
 }

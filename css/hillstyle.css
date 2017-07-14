@@ -156,7 +156,7 @@
 
 .name{
   padding-top: 5px;
-  font-size: 100%;
+  font-size: 90%;
   color: #f8f8f8;
 }
 
@@ -206,6 +206,35 @@
   height: calc(100vh - 70px);
   border: 1px solid #e2e2e2;
   z-index: 2;
+}
+
+.edit{
+  display: none;
+  padding: 10px 10px;
+  height: 80%;
+}
+
+.edit form{
+  float: left;
+  padding-top: 20px;
+  height: 100%;
+  width: 60%;
+  border-right: 1px solid #171717;
+}
+
+.edit input{
+  width: calc(90% + 20px);
+  height: 30px;
+  font-size: 100%;
+  margin-top: 10px;
+  padding-left: 10px;
+}
+
+.summary{
+  display: inline;
+  position: absolute;
+  width: 38%;
+  right: 0;
 }
 
 /* Watch page */

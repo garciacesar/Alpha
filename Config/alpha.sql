@@ -19,8 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `alpha`
 --
-CREATE DATABASE IF NOT EXISTS `alpha` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `alpha`;
+
 
 -- --------------------------------------------------------
 
