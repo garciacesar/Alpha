@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 14, 2017 at 02:59 PM
+-- Generation Time: Jul 15, 2017 at 02:57 AM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.1
 
@@ -20,14 +20,12 @@ SET time_zone = "+00:00";
 -- Database: `alpha`
 --
 
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `channels`
 --
 
-DROP TABLE IF EXISTS `channels`;
 CREATE TABLE `channels` (
   `id` int(11) NOT NULL,
   `channel` varchar(32) NOT NULL,
@@ -40,7 +38,6 @@ CREATE TABLE `channels` (
 -- Table structure for table `subscriptions`
 --
 
-DROP TABLE IF EXISTS `subscriptions`;
 CREATE TABLE `subscriptions` (
   `id` int(11) NOT NULL,
   `id_channel` int(11) NOT NULL,
@@ -53,7 +50,6 @@ CREATE TABLE `subscriptions` (
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(32) NOT NULL,
   `firstname` varchar(32) DEFAULT NULL,
@@ -80,7 +76,6 @@ CREATE TABLE `users` (
 -- Table structure for table `videos`
 --
 
-DROP TABLE IF EXISTS `videos`;
 CREATE TABLE `videos` (
   `id` int(11) NOT NULL,
   `video` varchar(25) NOT NULL,
@@ -127,22 +122,22 @@ ALTER TABLE `videos`
 -- AUTO_INCREMENT for table `channels`
 --
 ALTER TABLE `channels`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `subscriptions`
 --
 ALTER TABLE `subscriptions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `videos`
 --
 ALTER TABLE `videos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=904;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --

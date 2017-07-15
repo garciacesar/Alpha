@@ -33,7 +33,7 @@
       </div>
       <div class="inside">
         <div class="home">
-          <input class="btn btn-red" type="button" value="Sincronizar canais do youtube" onclick="location.href = 'Sys/receiveSubscribers.php';" style="width: 30%; margin: 10px 10px;">
+          <input class="btn btn-red bottom" type="button" value="Sincronizar canais do youtube" onclick="location.href = 'Sys/receiveSubscribers.php';" style="width: 30%; margin: 10px 10px;">
         </div>
         <div class="edit">
           <span style="float:right;">User > Edit</span><br>

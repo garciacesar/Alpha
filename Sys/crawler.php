@@ -23,7 +23,7 @@ foreach ($crawler->listChannels() as $key => $value) {
       $video = explode("=", $value);
       $video = $video[1];
 
-      echo $crawler->insertVideo($video, $idChannel);
+      echo $crawler->insertVideo($video, $idChannel) . "<br>";
 
     }
   }

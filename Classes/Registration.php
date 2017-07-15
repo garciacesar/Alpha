@@ -7,7 +7,7 @@
 **/
 
 require_once 'Config/Connect.php';
-require_once "Libraries/PHPMailer.php";
+require_once 'Libraries/phpmailer/PHPMailerAutoload.php';
 
 class Registration{
 
@@ -69,24 +69,24 @@ class Registration{
 
     $mail = new PHPMailer();
     $mail->IsSMTP();
-    $mail->SMTPDebug = 0;
-    $mail->SMTPSecure = 'ssl';
-    $mail->Port = 587;
-    $mail->Host = 'smtp.umbler.com';
-    $mail->SMTPAuth = true;
-    $mail->Username = 'cesar@twohills.com.br';
-    $mail->Password = 'init@nos3';
-    $mail->FromName = 'Equipe TwoHills TV';
-    $mail->From = 'no-reply@twohills.tv';
+    $mail->Host = 'smtp.umbler.com'; // Endereço do servidor SMTP (Autenticação, utilize o host smtp.seudomínio.com.br)
+    $mail->SMTPAuth   = true;  // Usar autenticação SMTP (obrigatório para smtp.seudomínio.com.br)
+    $mail->Port       = 587; //  Usar 587 porta SMTP
+    $mail->Username = 'cesar@twohills.com.br'; // Usuário do servidor SMTP (endereço de email)
+    $mail->Password = 'init@nos3'; // Senha do servidor SMTP (senha do email usado)
+
+    $mail->SetFrom('cesar@twohills.com.br', 'TwoHills Team'); //Seu e-mail
     $mail->AddAddress($email);
-    $mail->Subject = 'Bem Vindo a TwoHills TV';
-    $mail->Body = "http://localhost/Alpha/register?id=" . urlencode($id) . "&verification_code=" . urlencode($activation_hash);
+
+    $mail->isHTML(true);
+    $mail->Subject = 'Ativação de conta: TwoHills TV';//Assunto do e-mail
+    $mail->Body    = 'Bem vindo a TwoHills TV, abaixo está o link de ativacão da sua conta para fazer parte da familia TwoHills :)<br><br>https://twohills.com.br/tv/register?id=' . urlencode($id) . '&verification_code=' . urlencode($activation_hash);
 
     if(!$mail->Send()){
-      //$query_delete_user = "DELETE FROM users WHERE id=:id";
-      //$stmt = DB::prepare($query_delete_user);
-      //$stmt->bindValue(':id', $id, PDO::PARAM_INT);
-      //$stmt->execute();
+      $query_delete_user = "DELETE FROM users WHERE id=:id";
+      $stmt = DB::prepare($query_delete_user);
+      $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+      $stmt->execute();
       $this->errors[] = MESSAGE_VERIFICATION_MAIL_ERROR;
     } else {
       $this->messages[] = MESSAGE_VERIFICATION_MAIL_SENT;
@@ -106,7 +106,7 @@ class Registration{
       if ($stmt->rowCount() > 0) {
           $this->verification_successful = true;
           $this->messages[] = MESSAGE_REGISTRATION_ACTIVATION_SUCCESSFUL;
-          header( "refresh:3;url=localhost/twohills.tv" );
+          header( "refresh:3;url=/" );
       } else {
           $this->errors[] = MESSAGE_REGISTRATION_ACTIVATION_NOT_SUCCESSFUL;
       }
